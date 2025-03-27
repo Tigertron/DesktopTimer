@@ -51,8 +51,8 @@ void Widget::pauseTimer()
 
 void Widget::resetAll() {
     clearLinesTimer();
-    toogleTimer();
-    toogleTimer();
+    toogleTimer(); // stop
+    toogleTimer(); // start
 }
 
 void Widget::mouseDoubleClickEvent(QMouseEvent *event)
@@ -112,7 +112,7 @@ Widget::Widget(QWidget *parent)
     connect(tray_icon.get(), SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(show()));
     tray_icon_menu = new QMenu(this);
 
-    auto quitAction = std::make_unique<QAction>(tr("&Quit"), this);
+    quitAction = std::make_unique<QAction>(tr("&Quit"), this);
     connect(quitAction.get(), SIGNAL(triggered()), qApp, SLOT(quit()));
     tray_icon_menu->addAction(quitAction.get());
     tray_icon->setContextMenu(tray_icon_menu);
@@ -170,7 +170,4 @@ Widget::Widget(QWidget *parent)
 
 Widget::~Widget()
 {
-//    delete ui;
 }
-
-

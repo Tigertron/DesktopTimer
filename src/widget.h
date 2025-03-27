@@ -45,6 +45,7 @@ private:
 
     std::unique_ptr<QSystemTrayIcon> tray_icon;
     std::unique_ptr<Ui::Widget> ui;
+    std::unique_ptr<QAction> quitAction;
     QMenu *tray_icon_menu;
 
 private:
